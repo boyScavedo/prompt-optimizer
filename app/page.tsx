@@ -31,16 +31,16 @@ function OnboardingButton({
         whileTap={{ scale: 0.98 }}
       >
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-blue-600 to-cyan-600 animate-gradient" />
+        <div className="absolute inset-0 bg-linear-to-r from-violet-600 via-blue-600 to-cyan-600 animate-gradient" />
 
         {/* Shimmer Effect */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          <div className="absolute inset-0 -translate-x-full animate-shimmer bg-linear-to-r from-transparent via-white/20 to-transparent" />
         </div>
 
         {/* Border Gradient */}
-        <div className="absolute inset-0 rounded-xl p-[1px]">
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-violet-400 via-blue-400 to-cyan-400 opacity-50" />
+        <div className="absolute inset-0 rounded-xl p-px">
+          <div className="absolute inset-0 rounded-xl bg-linear-to-r from-violet-400 via-blue-400 to-cyan-400 opacity-50" />
         </div>
 
         {/* Content */}

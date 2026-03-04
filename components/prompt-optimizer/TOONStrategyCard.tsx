@@ -73,17 +73,17 @@ export function TOONStrategyCard({
     }
   }, [inputText]);
 
-  const handleCopy = useCallback(async () => {
-    if (!result?.optimized) return;
+  // const handleCopy = useCallback(async () => {
+  //   if (!result?.optimized) return;
 
-    try {
-      await navigator.clipboard.writeText(result.optimized);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Failed to copy:", err);
-    }
-  }, [result]);
+  //   try {
+  //     await navigator.clipboard.writeText(result.optimized);
+  //     setCopied(true);
+  //     setTimeout(() => setCopied(false), 2000);
+  //   } catch (err) {
+  //     console.error("Failed to copy:", err);
+  //   }
+  // }, [result]);
 
   return (
     <motion.button
@@ -102,7 +102,7 @@ export function TOONStrategyCard({
     >
       {/* Advanced Badge */}
       <div className="absolute -top-3 right-4">
-        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30">
+        <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-linear-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30">
           <Sparkles className="w-3 h-3" />
           Advanced
         </span>
@@ -110,7 +110,7 @@ export function TOONStrategyCard({
 
       {/* Icon & Title */}
       <div className="flex items-start gap-3">
-        <div className="p-2 rounded-xl bg-gradient-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30">
+        <div className="p-2 rounded-xl bg-linear-to-br from-cyan-500/20 to-blue-500/20 border border-cyan-500/30">
           <Code2 className="w-5 h-5 text-cyan-400" />
         </div>
 
@@ -129,14 +129,14 @@ export function TOONStrategyCard({
 
       {/* Savings Badge */}
       <div className="mt-3 flex items-center justify-between">
-        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30">
+        <span className="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium bg-linear-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/30">
           ~30-60% saved
         </span>
       </div>
 
       {/* Warning Note */}
       <div className="mt-3 flex items-start gap-2 text-xs text-amber-400">
-        <AlertTriangle className="w-3 h-3 mt-0.5 flex-shrink-0" />
+        <AlertTriangle className="w-3 h-3 mt-0.5 shrink-0" />
         <span>
           Ideal for nested JSON prompts. Great for structured prompts. Not
           recommended for paragraphs of text.
@@ -319,7 +319,7 @@ export function TOONOutputPanel({ inputText }: TOONOutputPanelProps) {
             </div>
             <div className="h-2 bg-slate-800 rounded-full overflow-hidden">
               <motion.div
-                className="h-full bg-gradient-to-r from-cyan-500 to-blue-500"
+                className="h-full bg-linear-to-r from-cyan-500 to-blue-500"
                 initial={{ width: 0 }}
                 animate={{ width: `${reductionPercent}%` }}
                 transition={{ duration: 0.5 }}
@@ -378,7 +378,7 @@ export function TOONOutputPanel({ inputText }: TOONOutputPanelProps) {
 
           {/* Warning */}
           <div className="flex items-start gap-2 text-xs text-amber-400 bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-            <AlertTriangle className="w-4 h-4 mt-0.5 flex-shrink-0" />
+            <AlertTriangle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>
               This output uses TOON format. The receiving LLM or system needs a
               TOON decoder to parse this correctly.

@@ -102,7 +102,7 @@ export function StrategyCard({
       {/* Recommended Badge */}
       {config.recommended && (
         <div className="absolute -top-3 right-4">
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-gradient-to-r from-amber-500/20 to-yellow-500/20 text-amber-400 border border-amber-500/30">
+          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-medium bg-linear-to-r from-amber-500/20 to-yellow-500/20 text-amber-400 border border-amber-500/30">
             <Star className="w-3 h-3 fill-current" />
             Recommended
           </span>
@@ -113,7 +113,7 @@ export function StrategyCard({
       <div className="flex items-start gap-3">
         <div
           className={`
-          p-2 rounded-xl bg-gradient-to-br ${config.bgGradient} border ${config.borderColor}
+          p-2 rounded-xl bg-linear-to-br ${config.bgGradient} border ${config.borderColor}
         `}
         >
           <Icon className={`w-5 h-5 ${config.color}`} />
@@ -135,7 +135,7 @@ export function StrategyCard({
         <span
           className={`
           inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-medium
-          bg-gradient-to-r ${config.bgGradient} ${config.color} border ${config.borderColor}
+          bg-linear-to-r ${config.bgGradient} ${config.color} border ${config.borderColor}
         `}
         >
           {config.savings} saved
