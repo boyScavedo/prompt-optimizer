@@ -2,7 +2,10 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import Script from "next/script";
 import "./globals.css";
+
+const BASE_URL = "https://prompt.jeevanadhikari.com.np";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,7 +24,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://prompt-optimizer.com"),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Prompt Optimizer - Reduce Token Usage by 60%",
     template: "%s | Prompt Optimizer",
@@ -54,22 +57,22 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://prompt.jeevanadhikari.com.np",
+    canonical: BASE_URL,
     languages: {
-      en: "https://prompt.jeevanadhikari.com.np",
+      en: BASE_URL,
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://prompt.jeevanadhikari.com.np",
+    url: BASE_URL,
     siteName: "Prompt Optimizer",
     title: "Prompt Optimizer - Reduce Token Usage by 60%",
     description:
       "Free client-side prompt optimizer using TOON encoding. Reduce LLM token usage by 30-60%. 100% private, no data leaves your browser.",
     images: [
       {
-        url: "/og-image.svg",
+        url: `${BASE_URL}/og-image.svg`,
         width: 1200,
         height: 630,
         alt: "Prompt Optimizer Dashboard Preview",
@@ -83,7 +86,7 @@ export const metadata: Metadata = {
     title: "Prompt Optimizer - Reduce Token Usage by 60%",
     description:
       "Free client-side prompt optimizer using TOON encoding. Reduce LLM token usage by 30-60%.",
-    images: ["/twitter-image.svg"],
+    images: [`${BASE_URL}/twitter-image.svg`],
   },
   icons: {
     icon: [
@@ -124,6 +127,70 @@ export const metadata: Metadata = {
   },
 };
 
+// Structured data for Organization schema
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Prompt Optimizer",
+  url: BASE_URL,
+  logo: `${BASE_URL}/og-image.svg`,
+  sameAs: ["https://github.com/boyScavedo", "https://x.com/JeevanAdhi22387"],
+  contactPoint: {
+    "@type": "ContactPoint",
+    email: "jeevan@example.com",
+    contactType: "Developer",
+  },
+  founder: {
+    "@type": "Person",
+    name: "Jeevan Adhikari",
+    url: "https://github.com/boyScavedo",
+  },
+};
+
+// Structured data for WebSite schema
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Prompt Optimizer",
+  url: BASE_URL,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${BASE_URL}/prompt-optimizer?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+  description:
+    "Free client-side prompt optimizer using TOON encoding to reduce LLM token usage by 30-60%",
+};
+
+// Structured data for SoftwareApplication schema
+const softwareAppSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Prompt Optimizer",
+  applicationCategory: "DeveloperApplication",
+  operatingSystem: "Web Browser",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "USD",
+  },
+  description:
+    "Free client-side prompt optimizer using TOON encoding to reduce LLM token usage by 30-60%",
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "5",
+    ratingCount: "1",
+  },
+  author: {
+    "@type": "Person",
+    name: "Jeevan Adhikari",
+    url: "https://github.com/boyScavedo",
+  },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -132,34 +199,32 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script
+        {/* Organization Schema */}
+        <Script
+          id="organization-schema"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "SoftwareApplication",
-              name: "Prompt Optimizer",
-              applicationCategory: "DeveloperApplication",
-              operatingSystem: "Web Browser",
-              offers: {
-                "@type": "Offer",
-                price: "0",
-                priceCurrency: "USD",
-              },
-              description:
-                "Free client-side prompt optimizer using TOON encoding to reduce LLM token usage by 30-60%",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "5",
-                ratingCount: "1",
-              },
-              author: {
-                "@type": "Person",
-                name: "Jeevan Adhikari",
-                url: "https://github.com/boyScavedo",
-              },
-            }),
+            __html: JSON.stringify(organizationSchema),
           }}
+          strategy="afterInteractive"
+        />
+        {/* WebSite Schema */}
+        <Script
+          id="website-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+          strategy="afterInteractive"
+        />
+        {/* SoftwareApplication Schema */}
+        <Script
+          id="software-app-schema"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(softwareAppSchema),
+          }}
+          strategy="afterInteractive"
         />
       </head>
       <body

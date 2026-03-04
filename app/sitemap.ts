@@ -1,17 +1,17 @@
 import { MetadataRoute } from "next";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://prompt-optimizer.com";
+const BASE_URL = "https://prompt.jeevanadhikari.com.np";
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: baseUrl,
+      url: BASE_URL,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/prompt-optimizer`,
+      url: `${BASE_URL}/prompt-optimizer`,
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.9,
