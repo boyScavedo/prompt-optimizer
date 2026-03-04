@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -52,15 +54,15 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://prompt-optimizer.com",
+    canonical: "https://prompt.jeevanadhikari.com.np",
     languages: {
-      en: "https://prompt-optimizer.com",
+      en: "https://prompt.jeevanadhikari.com.np",
     },
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://prompt-optimizer.com",
+    url: "https://prompt.jeevanadhikari.com.np",
     siteName: "Prompt Optimizer",
     title: "Prompt Optimizer - Reduce Token Usage by 60%",
     description:
@@ -164,6 +166,8 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
