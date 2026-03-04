@@ -9,6 +9,12 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@atjsh/llmlingua-2": "^2.0.3",
+    "@huggingface/transformers": "^3.8.1",
+    "@toon-format/toon": "^2.1.0",
+    "framer-motion": "^12.34.5",
+    "js-tiktoken": "^1.0.21",
+    "lucide-react": "^0.576.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3"

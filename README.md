@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prompt Optimizer
+
+A production-ready, frontend-only web app for compressing and optimizing LLM prompts. All processing happens in the browser - your data never leaves your device.
+
+## Features
+
+- **Fast Mode**: Rule-based compression using whitespace collapse, filler phrase removal, and redundant word pruning
+- **Smart Mode**: Advanced compression with context-aware truncation
+- **Real-time Token Counting**: Using js-tiktoken for accurate GPT token counting
+- **Target Token Slider**: Adjustable target from 50-1000 tokens
+- **Copy to Clipboard**: One-click copy with visual feedback
+- **Responsive Design**: Mobile-first, works on all devices
+- **Privacy-First**: 100% client-side processing
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- Node.js 18+
+- npm or yarn
+
+### Installation
 
 ```bash
+# Install dependencies
+npm install
+
+# Start development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+app/
+├── prompt-optimizer/
+│   ├── page.tsx       # Main optimizer UI
+│   ├── layout.tsx     # Shared layout with nav/footer
+│   └── loading.tsx    # Skeleton loader
+components/
+├── prompt-optimizer/
+│   ├── PromptInput.tsx
+│   ├── OptimizedOutput.tsx
+│   ├── TokenCounter.tsx
+│   ├── OptimizationControls.tsx
+│   └── CopyButton.tsx
+lib/
+├── prompt-optimizer/
+│   ├── tokenUtils.ts           # js-tiktoken wrappers
+│   ├── compressionStrategies.ts # Rule-based + smart compression
+│   └── types.ts                # TypeScript interfaces
+utils/
+├── clipboard.ts               # Safe copy-to-clipboard
+└── localStorage.ts            # User preferences
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Paste your LLM prompt in the input area
+2. Select optimization mode:
+   - **Fast (Rule-based)**: Quick compression, preserves most meaning
+   - **Smart (Advanced)**: More aggressive, context-aware compression
+3. Adjust target token count using the slider
+4. Click "Optimize Prompt"
+5. Copy the optimized result
 
-## Deploy on Vercel
+## Technical Details
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Token Counting**: Uses `js-tiktoken` with GPT-4o encoding
+- **Compression**: Rule-based heuristics with smart truncation
+- **Framework**: Next.js 14 with App Router, TypeScript, Tailwind CSS
+- **Browser Support**: Chrome, Firefox, Safari, Edge (modern versions)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Import project in Vercel
+3. Deploy
+
+### Subdomain Configuration
+
+For deployment to `prompt.jeevanadhikari.com.np`:
+
+1. Add domain in Vercel project settings
+2. Configure DNS records:
+   - CNAME: prompt → your-project.vercel.app
+
+## License
+
+MIT
