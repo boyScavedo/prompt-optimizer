@@ -69,7 +69,7 @@ utils/
 
 ## Usage
 
-1. Visit the [Live Website](https://prompt-optimizer.com) or run locally
+1. Visit the [Live Website](https://prompt.jeevanadhikari.com.np)
 2. Paste your LLM prompt in the input area
 3. Select compression strategy:
    - **Gentle**: Light compression, preserves most meaning (~20-30% reduction)
