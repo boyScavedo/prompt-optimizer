@@ -64,19 +64,24 @@ interface SavingsDisplayProps {
   inputTokens: number;
   outputTokens: number;
   compressionRatio: number;
+  isOptimized: boolean;
 }
 
 export function SavingsDisplay({
   inputTokens,
   outputTokens,
   compressionRatio,
+  isOptimized,
 }: SavingsDisplayProps) {
   const tokensSaved = inputTokens - outputTokens;
+
+  // Only show savings when optimized, otherwise show "—"
+  const showSavings = isOptimized && tokensSaved > 0;
 
   let variant: StyleVariant = "default";
   let icon = <Minus className="w-4 h-4" />;
 
-  if (tokensSaved > 0) {
+  if (showSavings) {
     if (compressionRatio >= 30) {
       variant = "success";
       icon = <ArrowUp className="w-4 h-4" />;
@@ -107,7 +112,7 @@ export function SavingsDisplay({
       {icon}
       <span className="text-sm font-medium text-slate-400">Saved:</span>
       <span className={`text-sm font-semibold ${textColorClass}`}>
-        {tokensSaved > 0
+        {showSavings
           ? `${tokensSaved.toLocaleString()} (${compressionRatio.toFixed(0)}%)`
           : "—"}
       </span>

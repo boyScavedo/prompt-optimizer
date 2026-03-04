@@ -36,6 +36,7 @@ import {
   TOONOutputPanel,
   getTOONHelperText,
 } from "@/components/prompt-optimizer/TOONStrategyCard";
+import Link from "next/link";
 
 /**
  * Main Prompt Optimizer Page - Redesigned with stunning UI
@@ -46,6 +47,7 @@ export default function PromptOptimizerPage() {
   const [output, setOutput] = useState("");
   const [strategy, setStrategy] = useState<CompressionStrategy>("balanced");
   const [isOptimizing, setIsOptimizing] = useState(false);
+  const [isOptimized, setIsOptimized] = useState(false);
   const [compressionRatio, setCompressionRatio] = useState(0);
   const [showWarning, setShowWarning] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -98,11 +100,13 @@ export default function PromptOptimizerPage() {
       const result = await compressPrompt(input, strategy);
       setOutput(result.compressedText);
       setCompressionRatio(result.compressionRatio);
+      setIsOptimized(true);
     } catch (error) {
       console.error("Optimization failed:", error);
       const result = await compressPrompt(input, "gentle");
       setOutput(result.compressedText);
       setCompressionRatio(result.compressionRatio);
+      setIsOptimized(true);
     } finally {
       setIsOptimizing(false);
     }
@@ -113,6 +117,7 @@ export default function PromptOptimizerPage() {
     setInput("");
     setOutput("");
     setCompressionRatio(0);
+    setIsOptimized(false);
   }, []);
 
   // Handle copy
@@ -210,6 +215,7 @@ export default function PromptOptimizerPage() {
               inputTokens={inputTokens}
               outputTokens={outputTokens}
               compressionRatio={compressionRatio}
+              isOptimized={isOptimized}
             />
           </motion.div>
         </motion.div>
@@ -394,18 +400,20 @@ export default function PromptOptimizerPage() {
             </div>
 
             <div className="flex items-center gap-4">
-              <a
-                href="#"
+              <Link
+                target="_blank"
+                href="https://github.com/boyScavedo"
                 className="p-2 rounded-lg bg-slate-900/50 hover:bg-slate-800/50 border border-white/10 hover:border-white/20 transition-all hover:scale-110"
               >
                 <Github className="w-5 h-5 text-slate-400" />
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                target="_blank"
+                href="https://x.com/JeevanAdhi22387"
                 className="p-2 rounded-lg bg-slate-900/50 hover:bg-slate-800/50 border border-white/10 hover:border-white/20 transition-all hover:scale-110"
               >
                 <Twitter className="w-5 h-5 text-slate-400" />
-              </a>
+              </Link>
             </div>
 
             <p className="text-xs text-slate-600">Built by Jeevan Adhikari</p>
