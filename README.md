@@ -1,16 +1,20 @@
 # Prompt Optimizer
 
-A production-ready, frontend-only web app for compressing and optimizing LLM prompts. All processing happens in the browser - your data never leaves your device.
+[Live Website](https://prompt.jeevanadhikari.com.np)
+
+[![Prompt Optimizer](/public/og-image.svg)](https://prompt.jeevanadhikari.com.np)
+
+A production-ready, 100% client-side web application for compressing and optimizing LLM prompts using TOON encoding. Reduce token usage by 30-60% while preserving your prompt's core intent - all processing happens in your browser, your data never leaves your device.
 
 ## Features
 
-- **Fast Mode**: Rule-based compression using whitespace collapse, filler phrase removal, and redundant word pruning
-- **Smart Mode**: Advanced compression with context-aware truncation
-- **Real-time Token Counting**: Using js-tiktoken for accurate GPT token counting
-- **Target Token Slider**: Adjustable target from 50-1000 tokens
-- **Copy to Clipboard**: One-click copy with visual feedback
+- **TOON Encoding**: Advanced compression using TOON format to reduce token usage by 30-60%
+- **Multiple Strategies**: Choose from Gentle, Balanced, or Aggressive compression modes
+- **Real-time Token Counting**: Live token counting before and after optimization
+- **100% Private**: All processing happens in your browser - no data ever leaves your device
+- **Privacy-First**: No API calls, no backend, no data collection
 - **Responsive Design**: Mobile-first, works on all devices
-- **Privacy-First**: 100% client-side processing
+- **Beautiful UI**: Modern dark theme with gradient accents
 
 ## Getting Started
 
@@ -65,13 +69,15 @@ utils/
 
 ## Usage
 
-1. Paste your LLM prompt in the input area
-2. Select optimization mode:
-   - **Fast (Rule-based)**: Quick compression, preserves most meaning
-   - **Smart (Advanced)**: More aggressive, context-aware compression
-3. Adjust target token count using the slider
+1. Visit the [Live Website](https://prompt-optimizer.com) or run locally
+2. Paste your LLM prompt in the input area
+3. Select compression strategy:
+   - **Gentle**: Light compression, preserves most meaning (~20-30% reduction)
+   - **Balanced**: Moderate compression, good balance (~40-50% reduction)
+   - **Aggressive**: Maximum compression, significant reduction (~70-80% reduction)
+   - **TOON**: Encode using TOON format for maximum efficiency
 4. Click "Optimize Prompt"
-5. Copy the optimized result
+5. View the token savings and copy the optimized result
 
 ## Technical Details
 
@@ -79,22 +85,6 @@ utils/
 - **Compression**: Rule-based heuristics with smart truncation
 - **Framework**: Next.js 14 with App Router, TypeScript, Tailwind CSS
 - **Browser Support**: Chrome, Firefox, Safari, Edge (modern versions)
-
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push to GitHub
-2. Import project in Vercel
-3. Deploy
-
-### Subdomain Configuration
-
-For deployment to `prompt.jeevanadhikari.com.np`:
-
-1. Add domain in Vercel project settings
-2. Configure DNS records:
-   - CNAME: prompt → your-project.vercel.app
 
 ## License
 
